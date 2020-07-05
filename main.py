@@ -5,7 +5,6 @@ from test import count_check
 import argparse
 
 
-
 @time
 def run(environment):
     logger = log_message()
@@ -48,7 +47,7 @@ if __name__ == '__main__':
         dest='env',
         required=True,
         choices=['DEV', 'QA'],
-        help= 'This is mandatory argument to denote which environment to run'
+        help='This is mandatory argument to denote which environment to run'
     )
 
     args = parser.parse_args()
