@@ -2,14 +2,19 @@ from mysql import connector as mc
 import datetime
 import json
 import pandas as pd
+import psycopg2
 
 
 def mysql_connection(env):
-    pass
+    config_details = read_config(env, 'MYSQL')
+    connection = mc.connect(**config_details)
+    return connection
 
 
 def postgres_connection(env):
-    pass
+    config_details = read_config(env, 'POSTGRES')
+    connection = psycopg2.connect(**config_details)
+    return connection
 
 
 def read_config(env, database_type):
@@ -42,4 +47,6 @@ def modern_printer(message):
 
 if __name__ == '__main__':
     # print(read_config('QA', 'POSTGRES'))
-    print(tables_to_be_loaded())
+    # print(tables_to_be_loaded())
+    # print(mysql_connection('dev'))
+    print(postgres_connection('dev'))
