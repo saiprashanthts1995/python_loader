@@ -3,30 +3,51 @@ import datetime
 import json
 import pandas as pd
 import psycopg2
+from loguru import logger
 
 
 def mysql_connection(env):
-    config_details = read_config(env, 'MYSQL')
-    connection = mc.connect(**config_details)
-    return connection
+    try:
+        config_details = read_config(env, 'MYSQL')
+        connection = mc.connect(**config_details)
+        logger.info('Connection to MYSQL is successful')
+        return connection
+    except Exception as e:
+        logger.exception('Issue in Mysql Connection Module')
 
 
 def postgres_connection(env):
-    config_details = read_config(env, 'POSTGRES')
-    connection = psycopg2.connect(**config_details)
-    return connection
+    try:
+        config_details = read_config(env, 'POSTGRES')
+        connection = psycopg2.connect(**config_details)
+        logger.info('Connection to POSTGRES is successful')
+        return connection
+    except Exception as e:
+        logger.exception('Issue in Postgres Connection Module')
 
 
 def read_config(env, database_type):
-    with open('config.json') as config_file:
-        config_file_content = json.load(config_file)
-    return config_file_content[env.upper()][database_type.upper()]
+    try:
+        with open('config.json') as config_file:
+            config_file_content = json.load(config_file)
+        logger.info('Read the config details module Successfully for the following arguments env {}  database type {}'.
+                    format(env, database_type))
+        return config_file_content[env.upper()][database_type.upper()]
+    except Exception as e:
+        logger.exception('Issue in the config details module for the following arguments env {}  database type {}'.
+                    format(env, database_type))
 
 
 def tables_to_be_loaded():
-    table_df = pd.read_csv('tables_to_loaded.txt', sep=':')
-    table_df = table_df.query("to_be_loaded == 'yes'")
-    return table_df['table_name'].to_list()
+    try:
+        table_df = pd.read_csv('tables_to_loaded.txt', sep=':')
+        table_df = table_df.query("to_be_loaded == 'yes'")
+        logger.info('tables_to_be_loaded module ran successfully. '
+                    'The list of tables to be loaded as follows {}'.format(table_df['table_name'].to_list()))
+        return table_df['table_name'].to_list()
+    except Exception as e:
+        logger.exception('Issue in the tables_to_be_loaded module ')
+
 
 
 def time(method):
@@ -45,8 +66,18 @@ def modern_printer(message):
     print('=' * 100)
 
 
+def log_message():
+    logger.add('./logs/logfile',
+               level='INFO',
+               retention='10 days',
+               rotation='10 days')
+    logger.info('Welcome to Python. This Module will help to load the data into postgres from mysql and files')
+
+
+
 if __name__ == '__main__':
+    print(log_message())
     # print(read_config('QA', 'POSTGRES'))
     # print(tables_to_be_loaded())
-    # print(mysql_connection('dev'))
-    print(postgres_connection('dev'))
+    print(mysql_connection('dev'))
+    # print(postgres_connection('dev'))
