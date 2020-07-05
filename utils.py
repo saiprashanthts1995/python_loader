@@ -89,6 +89,11 @@ def sql_alchemy_connection(env):
 
 
 
+def dynamically_create_insert_statement(column_names, table):
+    pass
+
+
+
 if __name__ == '__main__':
     print(log_message())
     # print(read_config('QA', 'POSTGRES'))
