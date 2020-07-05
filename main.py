@@ -1,6 +1,6 @@
-from utils import log_message, tables_to_be_loaded, time
-from read import read_table
-from write import write_to_table_from_table
+from utils import log_message, tables_to_be_loaded, time, read_files_to_loaded, get_current_path
+from read import read_table, read_csv_file, read_excel_file
+from write import write_to_table_from_table, write_to_table_from_file
 from test import count_check
 import argparse
 
@@ -32,6 +32,25 @@ def run(environment):
         logger.info('=' * 50)
 
     logger.info('Overall Process Completed')
+
+    current_path = get_current_path()
+
+    logger.info('=' * 50)
+    logger.info('Processing of CSV starts')
+    csv_details = read_files_to_loaded('CSV')
+    csv_data = read_csv_file(current_path+'\\src_data\\'+csv_details['FILENAME'],csv_details['DELIMITER'])
+    write_to_table_from_file(csv_details['FILENAME'].split('.')[0], csv_data, environment)
+    logger.info(f'Processing of CSV ends and data is loaded into table "{csv_details["FILENAME"].split(".")[0]}"')
+    logger.info('=' * 50)
+
+    logger.info('=' * 50)
+    logger.info('Processing of Excel starts')
+    excel_details = read_files_to_loaded('EXCEL')
+    excel_data = read_excel_file(current_path+'\\src_data\\'+excel_details['FILENAME'],excel_details['SHEET_NAME'])
+    write_to_table_from_file(excel_details['FILENAME'].split('.')[0], excel_data, environment)
+    logger.info(f'Processing of Excel ends and data is loaded into table "{excel_details["FILENAME"].split(".")[0]}"')
+    logger.info('=' * 50)
+
 
 
 if __name__ == '__main__':

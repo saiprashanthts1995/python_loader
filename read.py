@@ -31,7 +31,7 @@ def read_csv_file(file_name, sep_of_file):
 def read_excel_file(file_name, sheet_name):
     logger = log_message()
     try:
-        excel_data = pd.read_excel(file_name, sheet_name= sheet_name)
+        excel_data = pd.read_excel(file_name, sheet_name)
         logger.info('Successfully read the Excel file named {}'.format(file_name))
         return excel_data
     except:

@@ -1,0 +1,12 @@
+{
+  "CSV":
+  {
+    "FILENAME": "iris.csv",
+    "DELIMITER": ","
+  },
+  "EXCEL":
+  {
+    "FILENAME": "transport.xls",
+    "SHEET_NAME": "Sheet1"
+  }
+}

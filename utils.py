@@ -6,6 +6,7 @@ import psycopg2
 from loguru import logger
 from sqlalchemy import create_engine
 import yaml
+import os
 
 
 def mysql_connection(env):
@@ -109,7 +110,23 @@ def read_queries_from_yaml():
     return queries
 
 
+def get_current_path():
+    return os.path.dirname(os.path.realpath(__file__))
+
+
+def read_files_to_loaded(file_type):
+    try:
+        with open('files_to_loaded.json') as files_to_loaded_file:
+            files_to_loaded_content = json.load(files_to_loaded_file)
+        logger.info('Read the read_files_to_loaded module Successfully for the following file type {}'.
+                    format(file_type))
+        return files_to_loaded_content[file_type.upper()]
+    except Exception as e:
+        logger.exception(f'Issue in the read_files_to_loaded details module for the following file type {file_type}')
+
+
 if __name__ == '__main__':
+    '''
     print(log_message())
     print(read_config('QA', 'POSTGRES'))
     print(tables_to_be_loaded())
@@ -117,3 +134,6 @@ if __name__ == '__main__':
     print(sql_alchemy_connection('dev'))
     print(dynamically_create_insert_statement(('department_id', 'department_name'), 'department'))
     print(postgres_connection('dev'))
+    '''
+    print(get_current_path())
+    print(read_files_to_loaded('csv'))
