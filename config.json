@@ -3,38 +3,38 @@
   {
     "MYSQL":
     {
-      "USER_NAME" : "sai",
-      "PASSWORD" : "sai",
-      "HOST" : "ec2-34-224-6-178.compute-1.amazonaws.com",
-      "PORT" : "3306",
-      "DATABASE_NAME": "sai_mysql"
+      "user" : "sai",
+      "password" : "sai",
+      "host" : "ec2-34-224-6-178.compute-1.amazonaws.com",
+      "port" : "3306",
+      "database": "sai_mysql"
     },
     "POSTGRES":
     {
-      "USER_NAME" : "sai",
-      "PASSWORD" : "sai",
-      "HOST" : "ec2-34-224-6-178.compute-1.amazonaws.com",
-      "PORT" : "5432",
-      "DATABASE_NAME": "sai_postgres"
+      "user" : "sai",
+      "password" : "sai",
+      "host" : "ec2-34-224-6-178.compute-1.amazonaws.com",
+      "port" : "5432",
+      "database": "sai_postgres"
     }
   },
   "QA":
   {
     "MYSQL":
     {
-      "USER_NAME" : "sai",
-      "PASSWORD" : "sai",
-      "HOST" : "ec2-34-224-6-178.compute-1.amazonaws.com",
-      "PORT" : "3306",
-      "DATABASE_NAME": "sai_mysql"
+      "user" : "sai",
+      "password" : "sai",
+      "host" : "ec2-34-224-6-178.compute-1.amazonaws.com",
+      "port" : "3306",
+      "database": "sai_mysql"
     },
     "POSTGRES":
     {
-      "USER_NAME" : "sai",
-      "PASSWORD" : "sai",
-      "HOST" : "ec2-34-224-6-178.compute-1.amazonaws.com",
-      "PORT" : "5432",
-      "DATABASE_NAME": "sai_postgres"
+      "user" : "sai",
+      "password" : "sai",
+      "host" : "ec2-34-224-6-178.compute-1.amazonaws.com",
+      "port" : "5432",
+      "database": "sai_postgres"
     }
   }
 
