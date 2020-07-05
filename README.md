@@ -8,6 +8,10 @@
     if present. Once the data is loaded, a basic check is made to check
     the count of records between two databases.
     
+    Second Use case is when the csv file and excel files are onboarded 
+    into postgres nased on the configuration present in files_to_loadeds.json
+    file. This is done using SQL Alchemy packages.
+    
 ## Contents
     This Project consist of these files
     * config.json
@@ -67,8 +71,20 @@ grant all privileges on sai_mysql.* to sai;
 flush privileges;
 ```
 
+## Queries to Validate
+```commandline
+select count(*) from order_items;
+select count(*) from categories;
+select count(*) from customers;
+select count(*) from departments;
+select count(*) from orders;
+select count(*) from products;
+select count(*) from transport;
+select count(*) from iris;
+```
+
 ## Tools Used
 1. Pycharm Community Edition
 2. WinSCp to connect to EC2 Instance
 3. Putty to execute docker commands
-4. Dbeaver to connect to Mysql and Postes Database
+4. Dbeaver to connect to Mysql and Postgres Database
