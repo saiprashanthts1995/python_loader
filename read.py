@@ -14,6 +14,8 @@ def read_table(env, table):
         return [cursor.fetchall(), column_names]
     except:
         logger.exception('Issue occurred while reading the content of {} table'.format(table))
+    finally:
+        connection.close()
 
 
 def read_csv_file(file_name, sep_of_file):
