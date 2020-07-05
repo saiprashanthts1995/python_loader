@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import psycopg2
 from loguru import logger
+from sqlalchemy import create_engine
 
 
 def mysql_connection(env):
@@ -72,6 +73,19 @@ def log_message():
                retention='10 days',
                rotation='10 days')
     logger.info('Welcome to Python. This Module will help to load the data into postgres from mysql and files')
+    return logger
+
+
+def sql_alchemy_connection(env):
+    try:
+        config_details = read_config(env, 'POSTGRES')
+        engine_string = 'postgresql://{user}:{password}@{host}:{port}/{database}'.format(**config_details)
+        engine = create_engine(engine_string, echo=False)
+        connection = engine.connect()
+        logger.info('Connection to POSTGRES is successful through SQLALCHEMY')
+        return connection
+    except Exception as e:
+        logger.exception('Issue in Postgres Connection Module')
 
 
 
@@ -79,5 +93,6 @@ if __name__ == '__main__':
     print(log_message())
     # print(read_config('QA', 'POSTGRES'))
     # print(tables_to_be_loaded())
-    print(mysql_connection('dev'))
+    # print(mysql_connection('dev'))
+    print(sql_alchemy_connection('dev'))
     # print(postgres_connection('dev'))
