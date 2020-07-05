@@ -1,1 +1,7 @@
 table_name:to_be_loaded
+order_items:yes
+categories:yes
+customers:yes
+departments:yes
+orders:yes
+products:yes
