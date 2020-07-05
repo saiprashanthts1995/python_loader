@@ -1,0 +1,11 @@
+2020-07-05 10:52:14.378 | INFO     | utils:log_message:74 - Welcome to Python. This Module will help to load the data into postgres from mysql and files
+2020-07-05 10:52:14.389 | INFO     | utils:read_config:33 - Read the config details module Successfully for the following arguments env dev  database type MYSQL
+2020-07-05 10:52:14.757 | INFO     | utils:mysql_connection:13 - Connection to MYSQL is successful
+2020-07-05 11:06:46.101 | INFO     | __main__:log_message:75 - Welcome to Python. This Module will help to load the data into postgres from mysql and files
+2020-07-05 11:06:46.107 | INFO     | __main__:read_config:34 - Read the config details module Successfully for the following arguments env dev  database type POSTGRES
+2020-07-05 11:06:46.363 | ERROR    | __main__:sql_alchemy_connection:88 - Issue in Postgres Connection Module
+
+
+2020-07-05 11:07:23.096 | INFO     | __main__:log_message:75 - Welcome to Python. This Module will help to load the data into postgres from mysql and files
+2020-07-05 11:07:23.113 | INFO     | __main__:read_config:34 - Read the config details module Successfully for the following arguments env dev  database type POSTGRES
+2020-07-05 11:07:23.697 | INFO     | __main__:sql_alchemy_connection:85 - Connection to POSTGRES is successful through SQLALCHEMY
