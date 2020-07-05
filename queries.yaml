@@ -1,8 +1,3 @@
 queries:
-  select_order_items: select count(*) from order_items
-  select_categories: select count(*) from categories
-  select_order_items: select count(*) from customers
-  select_order_items: select count(*) from departments
-  select_order_items: select count(*) from orders
-  select_order_items: select count(*) from products
+  count_query: select count(*) from {}
 

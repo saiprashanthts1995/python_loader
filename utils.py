@@ -5,6 +5,7 @@ import pandas as pd
 import psycopg2
 from loguru import logger
 from sqlalchemy import create_engine
+import yaml
 
 
 def mysql_connection(env):
@@ -105,6 +106,11 @@ def dynamically_create_insert_statement(column_names, table):
 def truncate_query(table_name):
     return 'TRUNCATE TABLE {}'.format(table_name)
 
+
+def read_queries_from_yaml():
+    with open('queries.yaml') as queries_yaml:
+        queries = yaml.load(queries_yaml)
+    return queries
 
 
 if __name__ == '__main__':
