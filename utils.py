@@ -51,7 +51,6 @@ def tables_to_be_loaded():
         logger.exception('Issue in the tables_to_be_loaded module ')
 
 
-
 def time(method):
     def time_method(*args, **kwargs):
         ts = datetime.datetime.now()
@@ -73,7 +72,6 @@ def log_message():
                level='INFO',
                retention='10 days',
                rotation='10 days')
-    logger.info('Welcome to Python. This Module will help to load the data into postgres from mysql and files')
     return logger
 
 
@@ -89,7 +87,6 @@ def sql_alchemy_connection(env):
         logger.exception('Issue in Postgres Connection Module')
 
 
-
 def dynamically_create_insert_statement(column_names, table):
     no_of_columns = len(column_names)
     binding_variable = ', '.join(['%s'] * no_of_columns)
@@ -100,7 +97,6 @@ def dynamically_create_insert_statement(column_names, table):
         binding_variable=binding_variable
     )
     return query
-
 
 
 def truncate_query(table_name):
@@ -115,9 +111,9 @@ def read_queries_from_yaml():
 
 if __name__ == '__main__':
     print(log_message())
-    # print(read_config('QA', 'POSTGRES'))
-    # print(tables_to_be_loaded())
-    # print(mysql_connection('dev'))
+    print(read_config('QA', 'POSTGRES'))
+    print(tables_to_be_loaded())
+    print(mysql_connection('dev'))
     print(sql_alchemy_connection('dev'))
     print(dynamically_create_insert_statement(('department_id', 'department_name'), 'department'))
-    # print(postgres_connection('dev'))
+    print(postgres_connection('dev'))

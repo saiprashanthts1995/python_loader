@@ -27,7 +27,5 @@ def count_check(environment, table_name):
         psql_conn.close()
 
 
-
-
 if __name__ == '__main__':
     print(count_check('dev', 'departments'))

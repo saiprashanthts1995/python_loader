@@ -45,7 +45,6 @@ def write_to_table_from_file(table_name, data_to_be_loaded, env):
         connection.close()
 
 
-
 if __name__ == '__main__':
     data, column_names = read_table('dev', 'departments')
     write_to_table_from_table(data, column_names, 'dev', 'departments')
