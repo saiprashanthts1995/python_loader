@@ -9,8 +9,9 @@ def read_table(env, table):
         connection = mysql_connection(env)
         cursor = connection.cursor()
         cursor.execute('select * from {}'.format(table))
+        column_names = cursor.column_names
         logger.info('Successfully read the {} table'.format(table))
-        return cursor.fetchall()
+        return [cursor.fetchall(), column_names]
     except:
         logger.exception('Issue occurred while reading the content of {} table'.format(table))
 
