@@ -19,7 +19,9 @@ def read_config(env, database_type):
 
 
 def tables_to_be_loaded():
-    pass
+    table_df = pd.read_csv('tables_to_loaded.txt', sep=':')
+    table_df = table_df.query("to_be_loaded == 'yes'")
+    return table_df['table_name'].to_list()
 
 
 def time(method):
@@ -39,4 +41,5 @@ def modern_printer(message):
 
 
 if __name__ == '__main__':
-    print(read_config('QA', 'POSTGRES'))
+    # print(read_config('QA', 'POSTGRES'))
+    print(tables_to_be_loaded())
