@@ -90,7 +90,20 @@ def sql_alchemy_connection(env):
 
 
 def dynamically_create_insert_statement(column_names, table):
-    pass
+    no_of_columns = len(column_names)
+    binding_variable = ', '.join(['%s'] * no_of_columns)
+    column_names = ', '.join(column_names)
+    query = 'INSERT INTO {table_name} ({column_names}) values ({binding_variable}) '.format(
+        table_name=table,
+        column_names=column_names,
+        binding_variable=binding_variable
+    )
+    return query
+
+
+
+def truncate_query(table_name):
+    return 'TRUNCATE TABLE {}'.format(table_name)
 
 
 
@@ -100,4 +113,5 @@ if __name__ == '__main__':
     # print(tables_to_be_loaded())
     # print(mysql_connection('dev'))
     print(sql_alchemy_connection('dev'))
+    print(dynamically_create_insert_statement(('department_id', 'department_name'), 'department'))
     # print(postgres_connection('dev'))
